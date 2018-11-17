@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Weather View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="WeatherViewController" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="WeatherViewController" customModule="MyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -251,9 +251,8 @@
                                     <action selector="WeatherUpdate:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SFs-86-cQC"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time of data calculation: 18:23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-kS-t3c" userLabel="Long Label">
-                                <rect key="frame" x="16" y="646" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time of data calculation: 18:23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-kS-t3c" userLabel="Time of Data Label">
+                                <rect key="frame" x="16" y="648" width="343" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -263,8 +262,11 @@
                         <constraints>
                             <constraint firstItem="E0h-aX-oBb" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="7vB-96-MsA"/>
                             <constraint firstItem="E0h-aX-oBb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="CN9-ZE-mQk"/>
+                            <constraint firstItem="nWn-kS-t3c" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="E3Y-2Q-NIk"/>
+                            <constraint firstItem="nWn-kS-t3c" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="L9t-VI-r7P"/>
                             <constraint firstItem="th1-Kr-XgW" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="OCL-NQ-UMw"/>
                             <constraint firstItem="VNR-V6-HMc" firstAttribute="top" secondItem="th1-Kr-XgW" secondAttribute="bottom" constant="5" id="Q2a-wK-AWj"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="nWn-kS-t3c" secondAttribute="bottom" constant="5" id="UtX-Jh-rwt"/>
                             <constraint firstItem="F5z-rs-jfO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="V98-69-D8f"/>
                             <constraint firstItem="VNR-V6-HMc" firstAttribute="top" secondItem="F5z-rs-jfO" secondAttribute="bottom" constant="17" id="XtO-GE-kt4"/>
                             <constraint firstItem="VNR-V6-HMc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ZLb-lf-gVb"/>
@@ -302,7 +304,7 @@
         <!--Change City View Controller-->
         <scene sceneID="9fV-L8-Kpp">
             <objects>
-                <viewController id="P1Y-dL-zMM" customClass="ChangeCityViewController" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="P1Y-dL-zMM" customClass="ChangeCityViewController" customModule="MyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8SU-81-qPl"/>
                         <viewControllerLayoutGuide type="bottom" id="gDk-eH-nyp"/>
