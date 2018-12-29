@@ -18,6 +18,7 @@
 		D0584E37219F37C2009A543B /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0584E34219F37C2009A543B /* WeatherViewController.swift */; };
 		D0584E39219F37C2009A543B /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0584E36219F37C2009A543B /* ChangeCityViewController.swift */; };
 		D0584E3B219F3AF8009A543B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0584E3A219F3AF8009A543B /* Main.storyboard */; };
+		D0BF596321BC1B730044C7CF /* DarkSkyWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF596221BC1B730044C7CF /* DarkSkyWeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D0584E34219F37C2009A543B /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		D0584E36219F37C2009A543B /* ChangeCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		D0584E3A219F3AF8009A543B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D0BF596221BC1B730044C7CF /* DarkSkyWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyWeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				D0584E19219F3324009A543B /* MyWeather.xcdatamodeld */,
 				D0584E31219F3712009A543B /* WeatherDataModel.swift */,
+				D0BF596221BC1B730044C7CF /* DarkSkyWeatherModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				D0584E37219F37C2009A543B /* WeatherViewController.swift in Sources */,
 				D0584E13219F3324009A543B /* AppDelegate.swift in Sources */,
 				D0584E1B219F3324009A543B /* MyWeather.xcdatamodeld in Sources */,
+				D0BF596321BC1B730044C7CF /* DarkSkyWeatherModel.swift in Sources */,
 				D0584E39219F37C2009A543B /* ChangeCityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

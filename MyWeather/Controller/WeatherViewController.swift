@@ -18,13 +18,19 @@ import SwiftyJSON
 class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
     
     //Constants
+    // OpenWeatherMap
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
     let APP_ID = "6d782de5b8f6e4993751482e1bbb8ce3"
+    
+    // DarkSky
+    let WEATHER_URL2 = "https://api.darksky.net/forecast"
+    let APP_ID2 = "54850b7eb2c2f396abe26747ba18d351"
     
 
     //TODO: Declare instance variables here
     let locationManager = CLLocationManager()
     let weatherDataModel = WeatherDataModel()
+    let darkSkyWeatherDataModel = DarkSkyWeatherDataModel()
 
     
     //Pre-linked IBOutlets
@@ -106,9 +112,33 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         }
         
     }
+    
+    func getDarkSkyWeatherData(url: String, params: [String : String]) {
+        let requestUrl = url + "/" + APP_ID2 + "/" + params["lat"]! + "," + params["lon"]!
+        Alamofire.request(requestUrl, method: .get).responseJSON { (response) in
+            if response.result.isSuccess {
+                print("Success from DarkSky!")
+                print(JSON(response.result.value as Any))
+                
+                let weatherJSON : JSON = JSON(response.result.value!)
+                self.updateDarkSkyWeatherData(json: weatherJSON)
+            }
+            else {
+                print("Error \(String(describing: response.result.error))")
+            }
+        }
 
-    
-    
+
+        //Alamofire.request(requestUrl, method: .get, parameters: params).responseJSON { (response) in
+        //    if response.result.isSuccess {
+        //        print("Success from DarkSky!")
+        //        print(JSON(response.result.value as Any))
+        //    }
+        //    else {
+        //        print("Error \(String(describing: response.result.error))")
+        //    }
+        //}
+    }
     
     
     
@@ -165,6 +195,12 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         self.updateUIWithWeatherData()
     }
     
+    func updateDarkSkyWeatherData(json: JSON){
+        if let temperature = json["currently"]["temperature"].double {
+            darkSkyWeatherDataModel.temperature = temperature
+        }
+    }
+    
     //MARK: - Converters
     /***************************************************************/
 
@@ -192,7 +228,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     func updateUIWithWeatherData() {
         if weatherDataModel.hasData {
             conditionLabel.text = weatherDataModel.conditionText
-            temperatureLabel.text = "\(Int(weatherDataModel.temperature))℃"
+            temperatureLabel.text = "\(Int(darkSkyWeatherDataModel.temperature))℃"
             cityLabel.text = "\(weatherDataModel.city), \(weatherDataModel.country)"
             pressureLabel.text = "\(weatherDataModel.pressure) hPa"
             windDirectionLabel.text = "\(weatherDataModel.windDeg)°"
@@ -203,7 +239,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             sunriseLabel.text = "Soluppgång: \(weatherDataModel.sunrise)"
             sunsetLabel.text = "Solnedgång: \(weatherDataModel.sunset)"
             //localTimeLabel.text = "Lokal tid: \(weatherDataModel.localTime)"
-            timeOfDataCalcLabel.text = "Time of data calculation: \(weatherDataModel.timeOfDataCalc) local time"
+            timeOfDataCalcLabel.text = "Tid för väderberäkning: \(weatherDataModel.timeOfDataCalc) lokal tid"
             
             var lat : String = "Lat: \(weatherDataModel.latitude)"
             var long : String = "Long: \(weatherDataModel.longitude)"
@@ -238,7 +274,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             sunriseLabel.text = "Soluppgång: --:--"
             sunsetLabel.text = "Solnedgång: --:--"
             //localTimeLabel.text = "Lokal tid: --:--"
-            timeOfDataCalcLabel.text = "Time of data calculation: --:--"
+            timeOfDataCalcLabel.text = "Tid för väderberäkning: --:--"
             latLabel.text = "Lat: --.--"
             longLabel.text = "Long: --.--"
         }
@@ -267,6 +303,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             let params : [String : String] = ["lat" : lat, "lon" : long, "units" : "metric", "appid" : APP_ID]
             
             getWeatherData(url: WEATHER_URL, params: params)
+            
+            let params2 : [String : String] = ["lat" : lat, "lon" : long, "units" : "metric", "appid" : APP_ID2]
+            
+            getDarkSkyWeatherData(url: WEATHER_URL2, params: params2)
         }
     }
     
